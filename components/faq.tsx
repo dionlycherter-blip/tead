@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Accordion,
   AccordionContent,
@@ -7,90 +8,88 @@ import {
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
 
-export default function Faq() {
-  const accordionItems = [
-    {
-      title: "This template is Free?",
-      content: (
-        <div className="text-muted-foreground">
-          Yes, this template is free. You can use it for personal or commercial
-          purposes.
-        </div>
-      ),
-    },
-    {
-      title: "There are more templates?",
-      content: (
-        <div className="text-muted-foreground">
-          Yes, there are more templates available. You can find them here:{" "}
-          <a
-            href="https://www.facebook.com/profile.php?id=61553430196810"
-            target="_blank"
-            rel="noreferrer"
-            className="text-primary underline"
-          >
-            gonzalochale.dev
-          </a>
-        </div>
-      ),
-    },
-    {
-      title: "How can I use this template?",
-      content: (
-        <div className="text-muted-foreground">
-          You can use this template by cloning it from{" "}
-          <a
-            href="https://github.com/gonzalochale/nextui-saas-landing-template"
-            className="text-primary underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          .
-        </div>
-      ),
-    },
-    {
-      title: "How can I contribute to this template?",
-      content: (
-        <div className="text-muted-foreground">
-          You can contribute to this template by forking it on GitHub and
-          submitting a pull request. You can also report any issues or bugs you
-          encounter while using the template.
-        </div>
-      ),
-    },
-  ];
+const accordionItems = [
+  {
+    title: "บริการนี้เหมาะกับใครบ้าง?",
+    content: (
+      <div className="text-white/70">
+        เหมาะสำหรับเจ้าของธุรกิจ ผู้ประกอบการ บริษัท ห้างหุ้นส่วน และกิจการที่มีใบประกอบการ
+        ที่ต้องการเงินทุนหมุนเวียนเพื่อเสริมสภาพคล่อง ขยายกิจการ หรือจัดการค่าใช้จ่ายประจำ
+      </div>
+    ),
+  },
+  {
+    title: "ต้องเตรียมเอกสารอะไรบ้าง?",
+    content: (
+      <div className="text-white/70">
+        <ul className="list-disc space-y-2 pl-5">
+          <li>หนังสือรับรองบริษัทหรือใบประกอบการ</li>
+          <li>สำเนาบัตรประชาชนและทะเบียนบ้านผู้มีอำนาจ</li>
+          <li>Statement ย้อนหลัง 3–6 เดือน</li>
+          <li>รูปกิจการหรือหน้าร้านเพื่อประกอบการพิจารณา</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    title: "ใช้เวลานานแค่ไหนในการประเมินเบื้องต้น?",
+    content: (
+      <div className="text-white/70">
+        หลังส่งข้อมูลครบถ้วน เจ้าหน้าที่จะติดต่อกลับเพื่อประเมินเบื้องต้นโดยเร็วที่สุด
+        ระยะเวลาจริงขึ้นอยู่กับความครบถ้วนของเอกสารและประเภทกิจการ
+      </div>
+    ),
+  },
+  {
+    title: "สมัครผ่านช่องทางไหนได้บ้าง?",
+    content: (
+      <div className="text-white/70">
+        สามารถเริ่มต้นผ่าน LINE ได้โดยตรงจากเว็บไซต์ เพื่อให้เจ้าหน้าที่แนะนำขั้นตอนและเอกสาร
+        ที่ต้องใช้ต่อไปอย่างรวดเร็ว
+      </div>
+    ),
+  },
+  {
+    title: "เว็บไซต์นี้รองรับการดูบนมือถือหรือไม่?",
+    content: (
+      <div className="text-white/70">
+        รองรับทั้งมือถือ แท็บเล็ต และเดสก์ท็อป โดยออกแบบให้ CTA เด่น อ่านง่าย และแตะใช้งานสะดวก
+      </div>
+    ),
+  },
+];
 
+export default function Faq() {
   return (
     <motion.section
+      id="faq"
       initial={{ y: 20, opacity: 0 }}
-      whileInView={{
-        y: 0,
-        opacity: 1,
-      }}
+      whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.5, type: "spring", bounce: 0 }}
-      className="relative w-full max-w-(--breakpoint-xl) mx-auto px-4 py-28 gap-5 md:px-8 flex flex-col justify-center items-center"
+      transition={{ duration: 0.5, type: "spring", bounce: 0 }}
+      className="mx-auto flex w-full max-w-4xl flex-col items-center justify-center gap-5 px-4 py-16 md:px-8 sm:py-24"
     >
-      <div className="flex flex-col gap-3 justify-center items-center">
-        <h4 className="text-2xl font-bold sm:text-3xl bg-linear-to-b from-foreground to-muted-foreground text-transparent bg-clip-text">
+      <div className="flex flex-col items-center justify-center gap-3">
+        <div className="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[11px] font-semibold tracking-[0.22em] text-emerald-300">
           FAQ
+        </div>
+        <h4 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          คำถามที่พบบ่อย
         </h4>
-        <p className="max-w-xl text-muted-foreground text-center">
-          Here are some of our frequently asked questions.
+        <p className="max-w-xl text-center text-base leading-7 text-white/65 sm:text-lg">
+          ข้อมูลสำคัญสำหรับการเริ่มต้นขอสินเชื่อเสริมสภาพคล่องสำหรับธุรกิจ
         </p>
       </div>
-      <div className="flex w-full max-w-lg">
+
+      <div className="flex w-full max-w-3xl">
         <Accordion type="multiple" className="w-full">
           {accordionItems.map((item, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className="text-muted-foreground"
+              className="border-white/10 text-white/70"
             >
-              <AccordionTrigger className="text-left">
+              <AccordionTrigger className="text-left text-base text-white hover:no-underline">
                 {item.title}
               </AccordionTrigger>
               <AccordionContent>{item.content}</AccordionContent>

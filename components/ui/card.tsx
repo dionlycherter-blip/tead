@@ -1,9 +1,12 @@
 import * as React from "react"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
-  return (
+type CardProps = React.ComponentProps<"div"> & { href?: string }
+
+function Card({ className, href, children, ...props }: CardProps) {
+  const card = (
     <div
       data-slot="card"
       className={cn(
@@ -11,8 +14,14 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </div>
   )
+
+  if (href) return <Link href={href}>{card}</Link>
+
+  return card
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {

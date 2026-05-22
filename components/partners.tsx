@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { LINE_URL } from "@/lib/line";
 
 export default function Partners() {
   // svg icons provided by https://svgl.app/
@@ -8,7 +9,7 @@ export default function Partners() {
     {
       name: "BIZ",
       hours: "Mon–Fri 09:00–18:00",
-      lineUrl: "https://line.me/R/ti/p/XXXXXXXX",
+      lineUrl: LINE_URL,
       svg: (
         <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-500 flex items-center justify-center shadow-lg">
           <span className="text-white text-xl font-semibold">BIZ</span>
@@ -18,7 +19,7 @@ export default function Partners() {
     {
       name: "KIM",
       hours: "Mon–Fri 09:00–17:00",
-      lineUrl: "https://line.me/R/ti/p/XXXXXXXX",
+      lineUrl: LINE_URL,
       svg: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +206,7 @@ export default function Partners() {
   ];
 
   return (
-    <section className="max-w-(--breakpoint-md) w-full mx-auto px-4 py-24 gap-10 md:px-8 flex flex-col justify-center items-center text-center">
+    <section className="w-full max-w-4xl mx-auto px-4 py-12 gap-6 md:px-8 flex flex-col justify-center items-center text-center">
       <motion.div
         initial={{ y: 20, opacity: 0, filter: "blur(3px)" }}
         whileInView={{
@@ -217,27 +218,30 @@ export default function Partners() {
         transition={{ duration: 0.5, type: "spring", bounce: 0 }}
         className="flex flex-col gap-3"
       >
-        <h2 className="text-xl font-semibold sm:text-2xl bg-linear-to-b from-foreground to-muted-foreground text-transparent bg-clip-text">
-          ADMIN
+        <h2 className="text-xl font-heading font-semibold sm:text-2xl bg-linear-to-b from-foreground to-muted-foreground text-transparent bg-clip-text">
+          ทีมสนับสนุน
         </h2>
+        <p className="text-sm text-muted-foreground mt-2">ทีมงานดูแลลูกค้าสินเชื่อของเรา</p>
       </motion.div>
-      <div className="w-full grid grid-cols-3 sm:grid-cols-6 gap-4 place-items-center">
-        {icons.map((icon, index) => (
-          <div
-            key={icon.name}
-            className="w-12 h-12 flex items-center justify-center rounded-lg"
-          >
-            <motion.div
-              initial={{ y: 10, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="transform scale-75"
+      <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 place-items-center">
+        {icons
+          .filter((icon) => icon.name === "BIZ")
+          .map((icon, index) => (
+            <div
+              key={icon.name}
+              className="w-16 h-16 flex items-center justify-center rounded-lg"
             >
-              {icon.svg}
-            </motion.div>
-          </div>
-        ))}
+              <motion.div
+                initial={{ y: 10, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                className=""
+              >
+                {icon.svg}
+              </motion.div>
+            </div>
+          ))}
       </div>
     </section>
   );

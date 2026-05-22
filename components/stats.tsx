@@ -4,21 +4,21 @@ import NumberFlow from "@number-flow/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+const stats = [
+  { value: 5, suffix: "M", label: "วงเงินสูงสุด" },
+  { value: 24, suffix: "ชม.", label: "ตอบกลับเบื้องต้น" },
+  { value: 3, suffix: "+", label: "ประเภทเอกสารหลัก" },
+  { value: 2026, suffix: "", label: "ดีไซน์พร้อมใช้งาน" },
+];
+
 export default function Stats() {
   const [animate, setAnimate] = useState(false);
 
-  const stats = [
-    { value: 50, suffix: "K+", label: "Active Users" },
-    { value: 99.9, suffix: "%", label: "Uptime" },
-    { value: 500, suffix: "M+", label: "API Calls" },
-    { value: 150, suffix: "+", label: "Countries" },
-  ];
-
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className="px-4 py-14 sm:px-6 sm:py-20">
+      <div className="mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-[#0d0d0d] px-5 py-8 shadow-[0_18px_60px_rgba(0,0,0,0.28)] sm:px-8 sm:py-10">
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6"
           onViewportEnter={() => setAnimate(true)}
           viewport={{ once: true, amount: 0.4 }}
         >
@@ -30,12 +30,12 @@ export default function Stats() {
               viewport={{ once: true }}
               transition={{
                 duration: 0.6,
-                delay: index * 0.1,
+                delay: index * 0.08,
                 ease: "easeOut",
               }}
-              className="text-center"
+              className="rounded-[1.5rem] border border-white/10 bg-white/5 px-4 py-5 text-center"
             >
-              <div className="text-3xl md:text-4xl font-bold mb-2">
+              <div className="mb-2 text-3xl font-bold tracking-tight text-white md:text-4xl">
                 <NumberFlow
                   value={animate ? stat.value : 0}
                   format={{
@@ -44,7 +44,7 @@ export default function Stats() {
                 />
                 {stat.suffix}
               </div>
-              <div className="text-sm text-muted-foreground font-medium">
+              <div className="text-sm font-medium leading-6 text-white/65">
                 {stat.label}
               </div>
             </motion.div>

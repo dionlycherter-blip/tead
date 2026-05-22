@@ -2,15 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
 import NavBar from "@/components/navbar";
-import { Geist } from "next/font/google";
-
-const geist = Geist({
-  subsets: ["latin"],
-});
+// Using global font-family from globals.css (Sarabun)
 
 export const metadata: Metadata = {
-  title: "SaaS Landing Template",
-  description: "Landing Page template.",
+  title: "BIZ CASH",
+  description: "NEXUS04",
 };
 
 export default function RootLayout({
@@ -20,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${geist.className} antialiased`}>
+      <body className={`antialiased`}>
         <Providers>
           <NavBar />
           {children}
